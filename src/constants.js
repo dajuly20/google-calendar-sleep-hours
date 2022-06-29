@@ -5,6 +5,7 @@ export const RANGE_TYPE = {
   YEAR: 'year',
   TOTAL: 'total',
   CUSTOM: 'custom',
+  INSOMNIA: 'insomnia',
 };
 
 export const SORT_BY = {

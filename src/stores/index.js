@@ -26,7 +26,7 @@ const getViewState = () => {
   return {
     selectedRangeType: config.selectedRangeType ?? RANGE_TYPE.MONTH,
     currentDatePointerStart:
-      config.selectedRangeType === RANGE_TYPE.CUSTOM
+      (config.selectedRangeType === RANGE_TYPE.CUSTOM || config.selectedRangeType === RANGE_TYPE.INSOMNIA)
         ? config.start
         : dayjs().startOf('day').toJSON(),
     currentDatePointerEnd: config.end,

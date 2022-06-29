@@ -35,6 +35,8 @@ export const viewState = createSlice({
       state.weekStart = payload;
     },
     setStart: (state, { payload }) => {
+       // eslint-disable-next-line no-console
+      console.log(payload," <<");
       state.currentDatePointerStart = payload;
     },
     setEnd: (state, { payload }) => {
@@ -100,7 +102,10 @@ export const selectCurrentDatePointers = (state) => {
   } else if (selectedRangeType === RANGE_TYPE.TOTAL) {
     rangeStart = dayjs('2000-01-01T10:00:00Z');
     rangeEnd = dayjs('2040-01-01T10:00:00Z');
-  }
+  
+  } 
+
+
 
   return {
     start: rangeStart,
@@ -157,10 +162,14 @@ export const setSelectedCalendar = ({ calendarId }) => (dispatch, getState) => {
 };
 
 export const changeRangeType = ({ range }) => (dispatch, getState) => {
-  if (range === RANGE_TYPE.CUSTOM) {
+  if (range === RANGE_TYPE.CUSTOM || range === RANGE_TYPE.INSOMNIA) {
     const { start, end } = selectCurrentDatePointers(getState());
     // We need to subtract a day here, because a day was added to `end`
     // in order to have the selected end day in the calculation.
+
+    
+  // eslint-disable-next-line no-console
+  console.log(start," <<<");
     const correctedEnd = end.subtract(1, 'day');
     dispatch(setStart(start.toJSON()));
     dispatch(setEnd(correctedEnd.toJSON()));
@@ -176,7 +185,10 @@ export const changeWeekStart = (weekStart) => (dispatch) => {
 };
 
 export const changeStart = (start) => (dispatch) => {
+  // eslint-disable-next-line no-console
+  console.log(start, " <>");
   dispatch(setStart(start));
+  console.log(start, " <<>>");
   updateConfig({ start });
 };
 

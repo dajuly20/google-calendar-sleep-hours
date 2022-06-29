@@ -12,12 +12,10 @@ import {
 
 import styles from './CustomRange.module.css';
 
-const CustomRange = () => {
+const InsomniaRange = () => {
   const dispatch = useDispatch();
 
-  let { start, end } = useSelector(selectCurrentDatePointers);
-  if(!start) start = dayjs();
-  if(!end) end = dayjs();
+  const { start, end } = useSelector(selectCurrentDatePointers);
 
   return (
     <div
@@ -26,10 +24,10 @@ const CustomRange = () => {
         bootstrap['input-group'],
         bootstrap['input-group-sm']
       )}
-      data-testid="CustomRange"
+      data-testid="InsomniaRange"
     >
       <label htmlFor="dateStart" className={bootstrap['input-group-text']}>
-        Start:
+        Start:ööö
       </label>
       <input
         className={cx(bootstrap['form-control'], styles.inputDate)}
@@ -49,7 +47,7 @@ const CustomRange = () => {
         id="dateEnd"
         // We need to subtract a day here, because a day was added to `end`
         // in order to have the selected day in the calculation.
-        value={dayjs(end).subtract(1, 'day').format('YYYY-MM-DD')}
+        value={dayjs(end).format('YYYY-MM-DD')}
         onChange={({ target }) =>
           dispatch(changeEnd(dayjs(target.value).toJSON()))
         }
@@ -58,4 +56,4 @@ const CustomRange = () => {
   );
 };
 
-export default CustomRange;
+export default InsomniaRange;

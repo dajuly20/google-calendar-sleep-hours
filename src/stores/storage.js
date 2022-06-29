@@ -3,6 +3,9 @@ export const updateConfig = (rest) => {
   try {
     existingConfig = JSON.parse(window.localStorage.getItem('config'));
   } catch (err) {
+     // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
+      console.log(err," <<");
     // don't handle
   }
 
@@ -11,7 +14,9 @@ export const updateConfig = (rest) => {
     ...rest,
   };
 
-  window.localStorage.setItem('config', JSON.stringify(updatedConfig));
+  // eslint-disable-next-line no-console
+console.log(updatedConfig," <<");
+window.localStorage.setItem('config', JSON.stringify(updatedConfig));
 };
 
 export const getConfig = () => {

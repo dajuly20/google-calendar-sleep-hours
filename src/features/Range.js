@@ -24,6 +24,7 @@ const Range = () => {
       <option value="year">Year</option>
       <option value="total">Total</option>
       <option value="custom">Custom</option>
+      <option value="insomnia">Insomnia</option>
     </select>
   );
 };
